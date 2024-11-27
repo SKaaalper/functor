@@ -47,10 +47,10 @@ async function claimMiningReward(userId, headers, email) {
     await axios.get(`https://api.securitylabs.xyz/v1/users/earn/${userId}`, {
       headers
     });
-    parentPort.postMessage(`\x1b[38;5;121mReward mining diklaim untuk user ${maskEmail(email)}\x1b[0m`);
+    parentPort.postMessage(`\x1b[38;5;121mMining rewards are claimed for user ${maskEmail(email)}\x1b[0m`);
   } catch (error) {
     parentPort.postMessage(
-      `\x1b[38;5;168mKesalahan klaim reward mining : ${error.response.data.message}\x1b[0m`
+      `\x1b[38;5;168mMining reward claim error : ${error.response.data.message}\x1b[0m`
     );
   }
 }
@@ -63,9 +63,9 @@ async function activateEpoch(headers) {
         Origin: "chrome-extension://gahmmgacnfeohncipkjfjfbdlpbfkfhi"
       }
     });
-    parentPort.postMessage(`\x1b[38;5;121mEpoch diaktifkan\x1b[0m`);
+    parentPort.postMessage(`\x1b[38;5;121mEpoch activated\x1b[0m`);
   } catch (error) {
-    parentPort.postMessage(`\x1b[38;5;168mKesalahan aktivasi epoch: ${error.message}\x1b[0m`);
+    parentPort.postMessage(`\x1b[38;5;168mEpoch activation error: ${error.message}\x1b[0m`);
   }
 }
 
@@ -74,12 +74,12 @@ async function activateEpochLoop(headers) {
     await activateEpoch(headers);
     const randomDelay = Math.floor(Math.random() * 3 + 1) * 60000;
     parentPort.postMessage(
-      `\x1b[38;5;147mMenunggu ${randomDelay / 60000} menit sebelum aktivasi epoch lagi\x1b[0m`
+      `\x1b[38;5;147mWait ${randomDelay / 60000} minutes before epoch activate again\x1b[0m`
     );
     setTimeout(() => activateEpochLoop(headers), randomDelay);
   } catch (error) {
     parentPort.postMessage(
-      `\x1b[38;5;168mKesalahan pada activateEpochLoop: ${error.message}\x1b[0m`
+      `\x1b[38;5;168mError on activateEpochLoop: ${error.message}\x1b[0m`
     );
     setTimeout(() => activateEpochLoop(headers), 60000);
   }
@@ -124,14 +124,14 @@ async function workerMain() {
   };
 
   try {
-    parentPort.postMessage(`\x1b[38;5;122mMemproses akun: ${maskedEmail}\x1b[0m`);
+    parentPort.postMessage(`\x1b[38;5;122mProcessing account: ${maskedEmail}\x1b[0m`);
     const checkEmailResponse = await axios.post(
       "https://api.securitylabs.xyz/v1/auth/check-exist-email",
       { email },
       { headers }
     );
     if (!checkEmailResponse.data) {
-      parentPort.postMessage(`\x1b[38;5;168mEmail tidak ditemukan untuk akun: ${maskedEmail}\x1b[0m`);
+      parentPort.postMessage(`\x1b[38;5;168mEmail not found for account: ${maskedEmail}\x1b[0m`);
       return;
     }
 
@@ -149,14 +149,14 @@ async function workerMain() {
 
     const getWalletResponse = await axios.get("https://api.securitylabs.xyz/v1/wallets", { headers });
     const maskedWallet = maskWalletAddress(getWalletResponse.data[0].address);
-    parentPort.postMessage(`\x1b[38;5;123mAlamat wallet: ${maskedWallet}\x1b[0m`);
+    parentPort.postMessage(`\x1b[38;5;123mWallet address: ${maskedWallet}\x1b[0m`);
 
     claimMiningReward(userId, headers, email);
     setInterval(() => claimMiningReward(userId, headers, email), 86400000);
 
     activateEpochLoop(headers);
   } catch (error) {
-    parentPort.postMessage(`\x1b[38;5;168mKesalahan untuk akun ${maskedEmail}: ${error.message}\x1b[0m`);
+    parentPort.postMessage(`\x1b[38;5;168mError for account ${maskedEmail}: ${error.message}\x1b[0m`);
   }
 }
 
@@ -182,7 +182,7 @@ if (isMainThread) {
       });
     }
 
-    console.log("\x1b[38;5;122mSemua akun sedang diproses.\x1b[0m");
+    console.log("\x1b[38;5;122mAll accounts are being processed.\x1b[0m");
   }
 
   main();
