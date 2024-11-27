@@ -1,39 +1,37 @@
 # BOT FUNCTOR NODE
 
-![Fitur Functor](FUNCTOR.png)
+![Features](FUNCTOR.png)
 
-**Fitur:**
+**Features:**
 
-**• Multi Akun**
+**• Multi Account**
 
 **• Multi Thread**
 
-**• Auto Claim Tiap 24 Jam**
+**• Auto Claim Every 24 Hours**
 
-**• Spam Random Epoch 1-3 Menit Agar Node Aktif**
+**• Spam Random Epoch 1-3 Minutes To Get Node Active**
 
 
-*Note: Hanya Bisa Login Lewat Email*
+*Note: Only Login Via Email*
 
-# Cara Jalankan:
+# How to Run:
 
 1. **Clone Repository**
    ```bash
-   git clone https://github.com/wrightL-dev/FUNCTOR-NODE
-   cd FUNCTOR-NODE
+   git clone https://github.com/raymundedgar/functor/
+   cd functor
 
 2. **Install Package**
    ```bash
    npm install axios readline random-useragent
 
-3. **Edit File akun.txt Terlebih Dahulu Masukan Email Dan Password Sesuai Format, Dan Multi Akun Tinggal Tambahin List Di Bawah Nya**
+3. **Edit the file account.txt. First enter your email and password according to the format, and for multiple accounts just add the list below.**
 
-4. **node functor.js**
-
-## Dukungan
-
-Jika Anda memiliki pertanyaan atau butuh bantuan lebih lanjut, silakan bergabung dengan saluran Telegram kami di [t.me/tahuri01](https://t.me/tahuri01).
+4. Run the script
+   ```bash
+   node functor.js
 
 ## Lisensi
 
-Proyek ini dilisensikan di bawah [MIT License](LICENSE).
+This project is licensed under [MIT License](LICENSE).
