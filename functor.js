@@ -33,7 +33,7 @@ function maskWalletAddress(wallet) {
 }
 
 function readAccounts() {
-  const data = fs.readFileSync("akun.txt", "utf-8");
+  const data = fs.readFileSync("account.txt", "utf-8");
   const lines = data.split("\n").filter((line) => line.trim() !== "");
   const accounts = lines.map((line) => {
     const [email, password] = line.split("|");
