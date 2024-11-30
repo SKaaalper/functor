@@ -1,7 +1,5 @@
 # BOT FUNCTOR NODE
 
-![Features](FUNCTOR.png)
-
 **Features:**
 
 **• Multi Account**
