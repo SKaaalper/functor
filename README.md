@@ -25,6 +25,8 @@
    npm install axios readline random-useragent
 
 3. **Edit the file account.txt. First enter your email and password according to the format, and for multiple accounts just add the list below.**
+   ```bash
+   nano account.txt
 
 4. Run the script
    ```bash
