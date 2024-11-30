@@ -15,7 +15,7 @@
 
 **Create account**: https://node.securitylabs.xyz/?from=extension&type=signin&referralCode=cm44cw9pa7smln21bofqxx735
 
-**Invite code**: cm44cw9pa7smln21bofqxx735
+**Invite code**: `cm44cw9pa7smln21bofqxx735`
 
 # How to Run:
 
